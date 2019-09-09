@@ -1,6 +1,7 @@
 import { EventBus } from './EventBus/EventBus'
 import ERC20 from './ERC20/ERC20'
 const Web3 = require('web3')
+import Portis from '@portis/web3'
 
 var sample = new Vue({
   el: '#erc20-deposit-withdraw',
@@ -39,6 +40,7 @@ var sample = new Vue({
     },
 
     async loadWeb3 () {
+      /*
       if (window.web3) {
         window.web3 = new Web3(window.web3.currentProvider)
         this.web3js = new Web3(window.web3.currentProvider)
@@ -46,6 +48,10 @@ var sample = new Vue({
       } else {
         alert('Metamask is not Enabled')
       }
+      */
+      const portis = new Portis('2c275e48-a16c-43ff-9ca5-cc8fc045468a', 'rinkeby')
+      await portis.showPortis()
+      this.web3js = new Web3(portis.provider)
     }
   },
 

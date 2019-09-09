@@ -29,7 +29,9 @@ export default class ERC20 {
     this.rinkebyConfig = networkConfigs.networks['rinkeby']
     const client = this._createClient()
     client.on('error', console.error)
-    const callerAddress = await this._setupSigner(client, web3js.currentProvider)
+    const ethProvider = web3js.currentProvider
+    ethProvider.isMetaMask = true
+    const callerAddress = await this._setupSigner(client, ethProvider)
     console.log('callerAddress: ' + callerAddress)
     const loomProvider = await this._createLoomProvider(client, callerAddress)
     const web3 = new Web3(loomProvider)
@@ -152,7 +154,7 @@ export default class ERC20 {
     const mainNetCoinContractAddress = MainNetCoinJSON.networks[this.rinkebyConfig['networkId']].address
     console.log('mainNetCoinContractAddress: ' + mainNetCoinContractAddress)
     this.mainNetCoinContract = await new this.web3js.eth.Contract(MainNetCoinJSON.abi, mainNetCoinContractAddress)
-    console.log('mainNetCoinContract: ', this.mainNetCoinContractAddress)
+    console.log('mainNetCoinContract: ', this.mainNetCoinContract)
 
     const loomCoinContractAddress = LoomCoinJSON.networks[this.extdevConfig['networkId']].address
     console.log('loomCoinContractAddress: ' + loomCoinContractAddress)
