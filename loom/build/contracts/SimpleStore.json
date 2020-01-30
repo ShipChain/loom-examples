@@ -42,15 +42,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"NewValueSet\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/andrei/Documents/GitHub/loom-examples/loom/contracts/SimpleStore.sol\":\"SimpleStore\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/andrei/Documents/GitHub/loom-examples/loom/contracts/SimpleStore.sol\":{\"keccak256\":\"0x16a97bc0dcc422c7a556c7f1aabc1c8fc8e3ae238252bdc49e69c3f40b4b817e\",\"urls\":[\"bzzr://3ed983a3ed59da19a989278426817d58744e5b639da13cfbefe7057b09a1e7c2\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50610125806100206000396000f3fe6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146085575b600080fd5b348015605957600080fd5b50608360048036036020811015606e57600080fd5b810190808035906020019092919050505060ad565b005b348015609057600080fd5b50609760f0565b6040518082815260200191505060405180910390f35b806000819055507fb922f092a64f1a076de6f21e4d7c6400b6e55791cc935e7bb8e7e90f7652f15b6000546040518082815260200191505060405180910390a150565b6000805490509056fea165627a7a72305820bc6ec649a3f50297ad6e38f629cbb33fcfd9d08d3f2b63a238602a2114513c330029",
-  "deployedBytecode": "0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146085575b600080fd5b348015605957600080fd5b50608360048036036020811015606e57600080fd5b810190808035906020019092919050505060ad565b005b348015609057600080fd5b50609760f0565b6040518082815260200191505060405180910390f35b806000819055507fb922f092a64f1a076de6f21e4d7c6400b6e55791cc935e7bb8e7e90f7652f15b6000546040518082815260200191505060405180910390a150565b6000805490509056fea165627a7a72305820bc6ec649a3f50297ad6e38f629cbb33fcfd9d08d3f2b63a238602a2114513c330029",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"NewValueSet\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/lucas/projects/_examples/loom-examples/loom/contracts/SimpleStore.sol\":\"SimpleStore\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/lucas/projects/_examples/loom-examples/loom/contracts/SimpleStore.sol\":{\"keccak256\":\"0x16a97bc0dcc422c7a556c7f1aabc1c8fc8e3ae238252bdc49e69c3f40b4b817e\",\"urls\":[\"bzzr://3ed983a3ed59da19a989278426817d58744e5b639da13cfbefe7057b09a1e7c2\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610125806100206000396000f3fe6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146085575b600080fd5b348015605957600080fd5b50608360048036036020811015606e57600080fd5b810190808035906020019092919050505060ad565b005b348015609057600080fd5b50609760f0565b6040518082815260200191505060405180910390f35b806000819055507fb922f092a64f1a076de6f21e4d7c6400b6e55791cc935e7bb8e7e90f7652f15b6000546040518082815260200191505060405180910390a150565b6000805490509056fea165627a7a7230582012fdc2d95d36fd42cbd93a691be2262ef82e8f2326a86c2460392508031fe9f10029",
+  "deployedBytecode": "0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146085575b600080fd5b348015605957600080fd5b50608360048036036020811015606e57600080fd5b810190808035906020019092919050505060ad565b005b348015609057600080fd5b50609760f0565b6040518082815260200191505060405180910390f35b806000819055507fb922f092a64f1a076de6f21e4d7c6400b6e55791cc935e7bb8e7e90f7652f15b6000546040518082815260200191505060405180910390a150565b6000805490509056fea165627a7a7230582012fdc2d95d36fd42cbd93a691be2262ef82e8f2326a86c2460392508031fe9f10029",
   "sourceMap": "24:233:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;24:233:4;;;;;;;",
   "deployedSourceMap": "24:233:4:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;99:87;;8:9:-1;5:2;;;30:1;27;20:12;5:2;99:87:4;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;99:87:4;;;;;;;;;;;;;;;;;;;;190:65;;8:9:-1;5:2;;;30:1;27;20:12;5:2;190:65:4;;;;;;;;;;;;;;;;;;;;;;;99:87;146:6;138:5;:14;;;;163:18;175:5;;163:18;;;;;;;;;;;;;;;;;;99:87;:::o;190:65::-;226:4;245:5;;238:12;;190:65;:::o",
   "source": "pragma solidity 0.5.0;\n\ncontract SimpleStore {\n  uint value;\n\n  event NewValueSet(uint _value);\n\n  function set(uint _value) public {\n    value = _value;\n    emit NewValueSet(value);\n  }\n\n  function get() public view returns (uint) {\n    return value;\n  }\n}",
-  "sourcePath": "/Users/andrei/Documents/GitHub/loom-examples/loom/contracts/SimpleStore.sol",
+  "sourcePath": "/home/lucas/projects/_examples/loom-examples/loom/contracts/SimpleStore.sol",
   "ast": {
-    "absolutePath": "/Users/andrei/Documents/GitHub/loom-examples/loom/contracts/SimpleStore.sol",
+    "absolutePath": "/home/lucas/projects/_examples/loom-examples/loom/contracts/SimpleStore.sol",
     "exportedSymbols": {
       "SimpleStore": [
         309
@@ -397,7 +397,7 @@
     "src": "0:257:4"
   },
   "legacyAST": {
-    "absolutePath": "/Users/andrei/Documents/GitHub/loom-examples/loom/contracts/SimpleStore.sol",
+    "absolutePath": "/home/lucas/projects/_examples/loom-examples/loom/contracts/SimpleStore.sol",
     "exportedSymbols": {
       "SimpleStore": [
         309
@@ -765,12 +765,12 @@
         }
       },
       "links": {},
-      "address": "0xA706C1492F206b564A2dE7767a24f29ac0c892E7",
-      "transactionHash": "0x48cab28e2961e579d310f22d5d080e59b986f6c7c9bda80f54b7f247947b438f"
+      "address": "0xf03FFb4fbEBB58AE936741C0B4D756e9412Cab9B",
+      "transactionHash": "0x48c78e7b8f160bc61552e67229fb86b1feeffa91a418268bc7245a6ce550fe7a"
     }
   },
   "schemaVersion": "3.0.14",
-  "updatedAt": "2020-01-25T06:37:59.866Z",
+  "updatedAt": "2020-01-30T13:56:26.087Z",
   "devdoc": {
     "methods": {}
   },

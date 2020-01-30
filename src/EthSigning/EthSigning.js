@@ -17,6 +17,7 @@ import networkConfigs from '../../network-configs.json'
 import SimpleStoreJSON from '../../loom/build/contracts/SimpleStore.json'
 
 const Web3 = require('web3')
+const EthereumTx = require('ethereumjs-tx')
 
 export default class EthSigning {
   async load (web3js) {
@@ -44,6 +45,7 @@ export default class EthSigning {
     this.accountMapping = accountMapping
     this.web3js = web3js
     this.web3loom = new Web3(loomProvider)
+    this.web3js2loom = new Web3('wss://extdev-plasma-us1.dappchains.com/eth')
     await this._getContract()
     await this._filterEvents()
     await this._setValue()
@@ -137,6 +139,68 @@ export default class EthSigning {
     this.contract = new this.web3loom.eth.Contract(SimpleStoreJSON.abi, SimpleStoreJSON.networks[this.extdevConfig['networkId']].address)
   }
 
+  async _generateTransaction(value) {
+    const abiEncodedData = this.contract.methods.set(value).encodeABI()
+    return {
+      nonce: await this.web3js2loom.eth.getTransactionCount('0x41ef0087901189bB5134De780fC6b3392C7914E6'),
+      gasPrice: 0,
+      gasLimit: 0,
+      to: this.contract.options.address,
+      value: 0,
+      data: abiEncodedData,
+    }
+  }
+
+  _signTransaction(unsignedTx) {
+    const privateKey = new Buffer('0110000101110100011001010111001101110100011010110110010101111001', 'hex')
+    const tx = new EthereumTx(unsignedTx)
+
+    tx.sign(privateKey)
+
+    console.debug(`Signed Tx: ${JSON.stringify(tx.toJSON(true), null, 2)}`)
+
+    const txHash = '0x' + tx.hash().toString('hex')
+    const txSigned = '0x' + tx.serialize().toString('hex')
+    return [txSigned, txHash]
+  }
+
+  async _sendTransaction(tx) {
+    return await this.web3js2loom.eth.sendSignedTransaction(tx)
+  }
+
+  async _setValueRawTransaction () {
+    const value = parseInt(this.counter, 10)
+    console.debug(`Setting value: ${value}`)
+    
+    const unsignedTx = await this._generateTransaction(value)
+    console.debug(`unsignedTx: ${JSON.stringify(unsignedTx, null, 2)}`)
+    
+    const [signedTx, txHash] = this._signTransaction(unsignedTx)
+    console.debug(`rawSignedTx: ${signedTx}`)    
+    
+    const receipt = await this._sendTransaction(signedTx)
+    console.debug(`Transaction Receipt: ${JSON.stringify(receipt, null, 2)}`)
+
+    const transactionObj = await this.web3js2loom.eth.getTransaction(receipt.transactionHash)
+    console.debug(`Transaction by ${receipt.transactionHash}: ${JSON.stringify(transactionObj, null, 2)}`)
+    
+    const receipt2 = await this.web3js2loom.eth.getTransaction(transactionObj.hash)
+    console.debug(`Transaction by ${transactionObj.hash}: ${JSON.stringify(receipt2, null, 2)}`)
+    
+    console.log(`TransactionHash from ethereumjs-tx: ${txHash}`)
+    console.log(`TransactionHash from Loom Receipt : ${receipt.transactionHash}`)
+    console.log(`TransactionHash from Transaction  : ${transactionObj.hash}`)
+
+    const events = await this.web3js2loom.eth.getPastLogs({
+      fromBlock: receipt.blockNumber, 
+      toBlock: receipt.blockNumber,
+      address: this.contract.options.address
+    })
+
+    console.debug(`Events for Transaction: ${JSON.stringify(events, null, 2)}`)
+    console.log(`TransactionHash from Event        : ${events[0].transactionHash}`)
+  }
+
   async _setValue () {
     const ethAddress = this.accountMapping.ethereum.local.toString()
     const value = parseInt(this.counter, 10)
@@ -150,14 +214,14 @@ export default class EthSigning {
   async increment () {
     this.info = 'Please sign the transaction.'
     this.counter += 1
-    await this._setValue()
+    await this._setValueRawTransaction()
   }
 
   async decrement () {
     this.info = 'Please sign the transaction.'
     if (this.counter > 0) {
       this.counter -= 1
-      await this._setValue()
+      await this._setValueRawTransaction()
     } else {
       console.log('counter should be > 1.')
     }
